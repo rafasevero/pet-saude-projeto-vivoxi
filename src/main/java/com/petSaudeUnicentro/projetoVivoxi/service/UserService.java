@@ -1,14 +1,13 @@
 package com.petSaudeUnicentro.projetoVivoxi.service;
 
-import com.petSaudeUnicentro.projetoVivoxi.domain.user.User;
-import com.petSaudeUnicentro.projetoVivoxi.domain.user.UserRequestDTO;
-import com.petSaudeUnicentro.projetoVivoxi.domain.user.UserResponseDTO;
-import com.petSaudeUnicentro.projetoVivoxi.domain.user.UserUpdateDTO;
+import com.petSaudeUnicentro.projetoVivoxi.domain.user.*;
 import com.petSaudeUnicentro.projetoVivoxi.repositories.UserRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
+import org.springframework.http.HttpStatus;
 
 import java.util.List;
 import java.util.UUID;
@@ -52,7 +51,7 @@ public class UserService {
         if(data.login() != null) user.setLogin(data.login());
 
         userRepository.save(user);
-        return  new UserResponseDTO(user);
+        return new UserResponseDTO(user);
      }
 
     @Transactional
@@ -61,5 +60,19 @@ public class UserService {
                 .orElseThrow(() -> new RuntimeException("User not found!"));
 
         userRepository.delete(user);
+    }
+
+    public UserResponseDTO login(UserLoginRequestDTO data){
+
+        String identifier = data.identifier(); // data.login pode conter o login ou o email
+
+        User user = userRepository.findByLoginOrEmail(identifier, identifier)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Login e ou senha incorreta"));
+
+        if(!user.getPassword().equals(data.password())){
+            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Login e ou senha incorreta");
+        }
+
+        return new UserResponseDTO(user);
     }
 }

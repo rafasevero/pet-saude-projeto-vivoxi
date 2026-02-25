@@ -31,7 +31,7 @@ public class User {
     @Column(nullable = false)
     private String password;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String email;
 
     public int hashCode() { //hashCode cria um endereco rapido para recuperar automaticamente, caso precise de algum objeto

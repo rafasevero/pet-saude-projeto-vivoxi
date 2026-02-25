@@ -1,17 +1,16 @@
 package com.petSaudeUnicentro.projetoVivoxi.controller;
 
-import com.petSaudeUnicentro.projetoVivoxi.domain.user.User;
-import com.petSaudeUnicentro.projetoVivoxi.domain.user.UserRequestDTO;
-import com.petSaudeUnicentro.projetoVivoxi.domain.user.UserResponseDTO;
-import com.petSaudeUnicentro.projetoVivoxi.domain.user.UserUpdateDTO;
+import com.petSaudeUnicentro.projetoVivoxi.domain.user.*;
 import com.petSaudeUnicentro.projetoVivoxi.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+
 import java.util.List;
 import java.util.UUID;
 
+@CrossOrigin(origins = "http://localhost:5173") // permite que o React (localhost:5173 ou 3000) acesse a API
 @RestController
 @RequestMapping("/vivoxi/user")
 public class UserController {
@@ -42,6 +41,12 @@ public class UserController {
         this.userService.deleteUser(id);
 
         return ResponseEntity.noContent().build();
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<UserResponseDTO> login(@RequestBody UserLoginRequestDTO data) {
+        UserResponseDTO response = userService.login(data);
+        return ResponseEntity.ok(response);
     }
 
 
