@@ -1,0 +1,107 @@
+.landing-container {
+    /* O segredo está no 0.5 (50% de preto) */
+    background-image: linear-gradient(
+        rgba(0, 0, 0, 0.5), 
+        rgba(0, 0, 0, 0.5)
+      ), 
+      url(../../assets/landingpage.jpg);
+    
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    width: 100%;
+
+    /* Layout para posicionar o texto como na imagem */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centraliza verticalmente */
+    padding-left: 10%;
+}
+
+.landing-container h1 {
+    color: #ffffff;
+    font-size: 3.0rem;      
+    max-width: 600px;       /* Limita a largura para o texto quebrar linha */
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); 
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    padding: 20px 8%; /* Ajuste o 5% para controlar a distância das bordas */
+    background: transparent;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.nav-links {
+    margin-left: auto; 
+    margin-right: 50px; 
+    display: flex;
+    gap: 30px; /* Espaço entre Sobre e Contato */
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    margin: 0;
+    font-size: 0.9rem;
+    transition: 0.3s;
+    padding: 40px;
+}
+
+.nav-links a:hover {
+    opacity: 0.7;
+    transform: scale(1.07);
+}
+
+.login-btn {
+    background-color:#005a8e ;
+    color: white;
+    border: none;
+    padding: 15px;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 20px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.login-btn:hover {
+    background-color:#00304e;
+    transform: scale(1.1);
+}
+.login-btn:active {
+    transform: scale(0.95); /*impressao de que o botao foi clicado*/
+}
+
+.content-landing {
+    flex: 1; /*faz o conteudo ocupar o resto da tela*/
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:flex-start;
+    padding-left: 8%;
+    text-align: left;
+}
+
+.content-landing h1 {
+    font-size: 3.5rem;
+    font-family: 'Georgia', serif;
+    margin-bottom: 20px;
+    max-width: 600px;
+    white-space: nowrap;
+    width: auto;
+    max-width: none;
+}
+
+.content-landing p {
+    font-size: 2.2rem;       
+    color: #e0e0e0;        
+    max-width: 600px;        /* O segredo: limita o texto para ele "empilhar" */
+    line-height: 1.5;        /* Espaçamento entre linhas para não ficar embolado */
+    font-weight: 300;        
+    margin: 0;
+    font-family: sans-serif; 
+}

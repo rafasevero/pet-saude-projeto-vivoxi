@@ -1,0 +1,10 @@
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-img {
+    height: 70px; /* Ajuste o tamanho ideal aqui */
+    width: auto;
+}
