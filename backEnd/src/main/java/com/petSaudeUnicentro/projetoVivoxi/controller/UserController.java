@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.UUID;
 
-@CrossOrigin(origins = "http://localhost:5173") // permite que o React (localhost:5173 ou 3000) acesse a API
 @RestController
 @RequestMapping("/vivoxi/user")
 public class UserController {
